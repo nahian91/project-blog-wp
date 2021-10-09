@@ -1,91 +1,69 @@
 <?php get_header();?>
 
-
     <section class="slider-style-six">
         <div class="container">
             <div class="row">
 
+            <?php
+                $args = array(
+                    'post_type' => 'post',
+                    'posts_per_page' => 3
+                );
+                $query = new WP_Query($args);
+                while($query->have_posts()) {
+                    $query->the_post();
+            ?>
+                
+
                 <?php
-                    $posts = new WP_Query(
-                        array(
-                            'post_type' => 'post',
-                            'posts_per_page' => 3
-                        )
-                    );
-                    $i = 0;
-                    while($posts -> have_posts())
-                    {
-                        $i++;
-                        $posts -> the_post();
-                    ?>
+                    if( 1 > $query-> current_post) {
+                ?>
+                <div class="col-md-8 col-sm-12 col-xs-12 first-column">
+                    <div class="single-item">
+                        <div class="single-item-overlay">
+                            <div class="img-box">
+                                <img src="<?php the_post_thumbnail_url();?>" alt="<?php the_title();?>">
+                                <div class="overlay">
+                                    <div class="inner-box">
+                                        <div class="content blog-content-one">
+                                            <div class="meta-text"><?php the_category();?></div>
+                                            <div class="title"><h3><a href="<?php the_permalink();?>"> <?php the_title();?></a></h3></div>
+                                            <div class="date"><span>On</span> <?php the_date();?> &nbsp;&nbsp;<i class="flaticon-circle"></i>&nbsp;&nbsp;<span>By</span> <?php the_author();?></div>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12 col-xs-12 column">
+                <?php
+                    }
+                    else if( 3 > $query->current_post) {
+                ?>
                     
-                <?php
-                    if($i == 1) {
-                ?>
-                        <div class="col-md-8 col-sm-12 col-xs-12 first-column">
                     <div class="single-item">
                         <div class="single-item-overlay">
                             <div class="img-box">
-                                <img src="<?php echo get_template_directory_uri();?>/images/home6/slider1.jpg" alt="">
+                                <img src="<?php the_post_thumbnail_url();?>" alt="<?php the_title();?>">
                                 <div class="overlay">
                                     <div class="inner-box">
                                         <div class="content blog-content-one">
-                                            <div class="meta-text"><a href="#">Fashion</a></div>
-                                            <div class="title"><h3><a href="post3.html"> <?php the_title();?></a></h3></div>
-                                            <div class="date"><span>On</span> JANUARY 27, 2018 &nbsp;&nbsp;<i class="flaticon-circle"></i>&nbsp;&nbsp;<span>By</span> PAUL JOHN HEYMAN</div>
+                                            <div class="meta-text"><?php the_category();?></div>
+                                            <div class="title"><h3><a href="<?php the_permalink();?>"><?php the_title();?></a></h3></div>
+                                            <div class="date"><span>On</span> <?php the_date();?> &nbsp;&nbsp;<i class="flaticon-circle"></i>&nbsp;&nbsp;<span>By</span> <?php the_author();?></div>
                                         </div>
                                     </div> 
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 <?php
                     }
-                    else {
-?>
-    <div class="col-md-4 col-sm-12 col-xs-12 column">
-                    <div class="single-item">
-                        <div class="single-item-overlay">
-                            <div class="img-box">
-                                <img src="<?php echo get_template_directory_uri();?>/images/home6/slider2.jpg" alt="">
-                                <div class="overlay">
-                                    <div class="inner-box">
-                                        <div class="content blog-content-one">
-                                            <div class="meta-text"><a href="#">TRAVEL</a></div>
-                                            <div class="title"><h3><a href="post3.html">Star the professor and mary</a></h3></div>
-                                            <div class="date"><span>On</span> February 10, 2018 &nbsp;&nbsp;<i class="flaticon-circle"></i>&nbsp;&nbsp;<span>By</span> PAUL JOHN HEYMAN</div>
-                                        </div>
-                                    </div> 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-item">
-                    <div class="single-item-overlay">
-                        <div class="img-box">
-                            <img src="<?php echo get_template_directory_uri();?>/images/home6/slider3.jpg" alt="">
-                            <div class="overlay">
-                                <div class="inner-box">
-                                    <div class="content blog-content-one">
-                                        <div class="meta-text"><a href="#">MUSIC</a></div>
-                                        <div class="title"><h3><a href="post3.html">Dangerous world of a man</a></h3></div>
-                                        <div class="date"><span>On</span> March 27, 2018 &nbsp;&nbsp;<i class="flaticon-circle"></i>&nbsp;&nbsp;<span>By</span> PAUL JOHN HEYMAN</div>
-                                    </div>
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-<?php
-                    }
-                ?>
-                
-                    <?php
-                    }
-                    wp_reset_postdata();
-                ?>
-                
+                }
+                wp_reset_postdata();
+            ?>
+
             </div>
         </div>
     </section>
