@@ -3627,3 +3627,8 @@ td.qty {
 .page-pagination{
   margin-top: 40px;
 }
+.image-box {
+	height: 300px;
+	background-size: cover;
+	background-position: center;
+}
