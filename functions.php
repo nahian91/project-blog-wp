@@ -296,7 +296,6 @@ class Belfast_Category extends WP_Widget {
                 <ul class="categories-list"> 
                     <?php
                         $cats = get_categories();
-                        print_r($cats);
                         foreach($cats as $cat) {
                     ?>
                         <li><a href="<?php echo $cat->slug;?>"><?php echo $cat->cat_name;?><span>(<?php echo $cat->category_count;?>)</span></a></li>
@@ -332,3 +331,9 @@ class Belfast_Category extends WP_Widget {
  
 }
 $category = new Belfast_Category();
+
+
+function custom_excerpt_length( $length ) {
+    return 20;
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );

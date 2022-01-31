@@ -112,15 +112,24 @@
             <div class="col-md-9 col-sm-12 col-xs-12 content-side">
                     <div class="blog-details-content">
                         <div class="row">
+                            <?php
+                                $args = array(
+                                    'post_type' => 'post',
+                                    'posts_per_page' => '8'
+                                );
+                                $query = new WP_Query($args);
+                                while($query->have_posts()){
+                                    $query->the_post();
+                            ?>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <div class="content-box overlay-item">
                                     <div class="inner-box">
                                         <div class="image-box">
-                                            <figure class="image"><img src="<?php echo get_template_directory_uri();?>/images/home2/4.jpg" alt=""></figure>
+                                            <figure class="image"><?php the_post_thumbnail('large', array('alt' => get_the_title()));?></figure>
                                             <div class="overlay-box">
                                                 <div class="overlay-inner">
                                                     <div class="content">
-                                                        <a href="post1.html"><i class="fa fa-link"></i></a>
+                                                        <a href="<?php the_permalink();?>"><i class="fa fa-link"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -128,230 +137,24 @@
                                     </div>
                                     <div class="blog-content-one blog-content-two sp-three">
                                         <div class="top-content centred">
-                                            <div class="meta-text"><a href="#">FASHION</a></div>
-                                            <div class="title"><h4><a href="post1.html">Flying away on a wing</a></h4></div>
-                                            <div class="date"><span>On</span> JANUARY 19, 2018 &nbsp;&nbsp;<i class="flaticon-circle"></i>&nbsp;&nbsp;<span>By</span> PAUL JOHN HEYMAN</div>
+                                            <div class="meta-text"><?php the_category();?></div>
+                                            <div class="title"><h4><a href="<?php the_permalink();?>"><?php the_title();?></a></h4></div>
+                                            <div class="date"><span>On</span> <?php the_date();?> &nbsp;&nbsp;<i class="flaticon-circle"></i>&nbsp;&nbsp;<span>By</span> <?php the_author();?></div>
                                         </div>
                                         <div class="text">
-                                            <p>The need no welfare states starship enterprise theatre Brady Bunch that's the way we all be came the Braden Bunch these days are all Happy and Free these days a fish do not fry in the kitchen and beans...</p>
+                                            <?php the_excerpt();?>
                                         </div>
                                         <ul class="meta-list centred">
-                                            <li><a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>&nbsp; 19</a> &nbsp; <i class="flaticon-circle"></i> &nbsp; <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i>&nbsp; 13</a></li>
+                                            <li><a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>&nbsp; <?php echo get_comments_number();?></a> &nbsp; <i class="flaticon-circle"></i> &nbsp; <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i>&nbsp; 13</a></li>
                                             <li><a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i> &nbsp;Share</a></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="content-box overlay-item">
-                                    <div class="inner-box">
-                                        <div class="image-box">
-                                            <figure class="image"><img src="<?php echo get_template_directory_uri();?>/images/home2/5.jpg" alt=""></figure>
-                                            <div class="overlay-box">
-                                                <div class="overlay-inner">
-                                                    <div class="content">
-                                                        <a href="post1.html"><i class="fa fa-link"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="blog-content-one blog-content-two sp-three">
-                                        <div class="top-content centred">
-                                            <div class="meta-text"><a href="#">MUSIC</a></div>
-                                            <div class="title"><h4><a href="post1.html">The kitchen and beans</a></h4></div>
-                                            <div class="date"><span>On</span> JANUARY 30, 2018 &nbsp;&nbsp;<i class="flaticon-circle"></i>&nbsp;&nbsp;<span>By</span> PAUL JOHN HEYMAN</div>
-                                        </div>
-                                        <div class="text">
-                                            <p>The need no welfare states starship enterprise theatre Brady Bunch that's the way we all be came the Braden Bunch these days are all Happy and Free these days a fish do not fry in the kitchen and beans...</p>
-                                        </div>
-                                        <ul class="meta-list centred">
-                                            <li><a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>&nbsp; 19</a> &nbsp; <i class="flaticon-circle"></i> &nbsp; <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i>&nbsp; 13</a></li>
-                                            <li><a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i> &nbsp;Share</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="content-box overlay-item">
-                                    <div class="inner-box">
-                                        <div class="image-box">
-                                            <figure class="image"><img src="<?php echo get_template_directory_uri();?>/images/home2/6.jpg" alt=""></figure>
-                                            <div class="overlay-box">
-                                                <div class="overlay-inner">
-                                                    <div class="content">
-                                                        <a href="post1.html"><i class="fa fa-link"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="blog-content-one blog-content-two sp-three">
-                                        <div class="top-content centred">
-                                            <div class="meta-text"><a href="#">LIFESTYLE</a></div>
-                                            <div class="title"><h4><a href="post1.html">Five passengers set sail that day</a></h4></div>
-                                            <div class="date"><span>On</span> February 10, 2017 &nbsp;&nbsp;<i class="flaticon-circle"></i>&nbsp;&nbsp;<span>By</span> PAUL JOHN HEYMAN</div>
-                                        </div>
-                                        <div class="text">
-                                            <p>The need no welfare states starship enterprise theatre Brady Bunch that's the way we all be came the Braden Bunch these days are all Happy and Free these days a fish do not fry in the kitchen and beans...</p>
-                                        </div>
-                                        <ul class="meta-list centred">
-                                            <li><a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>&nbsp; 19</a> &nbsp; <i class="flaticon-circle"></i> &nbsp; <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i>&nbsp; 13</a></li>
-                                            <li><a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i> &nbsp;Share</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="content-box overlay-item">
-                                    <div class="inner-box">
-                                        <div class="image-box">
-                                            <figure class="image"><img src="<?php echo get_template_directory_uri();?>/images/home2/7.jpg" alt=""></figure>
-                                            <div class="overlay-box">
-                                                <div class="overlay-inner">
-                                                    <div class="content">
-                                                        <a href="post1.html"><i class="fa fa-link"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="blog-content-one blog-content-two sp-three">
-                                        <div class="top-content centred">
-                                            <div class="meta-text"><a href="#">TRAVEL</a></div>
-                                            <div class="title"><h4><a href="post1.html">Smile from seven stranded</a></h4></div>
-                                            <div class="date"><span>On</span> February 25, 2018 &nbsp;&nbsp;<i class="flaticon-circle"></i>&nbsp;&nbsp;<span>By</span> PAUL JOHN HEYMAN</div>
-                                        </div>
-                                        <div class="text">
-                                            <p>The need no welfare states starship enterprise theatre Brady Bunch that's the way we all be came the Braden Bunch these days are all Happy and Free these days a fish do not fry in the kitchen and beans...</p>
-                                        </div>
-                                        <ul class="meta-list centred">
-                                            <li><a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>&nbsp; 19</a> &nbsp; <i class="flaticon-circle"></i> &nbsp; <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i>&nbsp; 13</a></li>
-                                            <li><a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i> &nbsp;Share</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="content-box overlay-item">
-                                    <div class="inner-box">
-                                        <div class="image-box">
-                                            <figure class="image"><img src="<?php echo get_template_directory_uri();?>/images/home2/8.jpg" alt=""></figure>
-                                            <div class="overlay-box">
-                                                <div class="overlay-inner">
-                                                    <div class="content">
-                                                        <a href="post1.html"><i class="fa fa-link"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="blog-content-one blog-content-two sp-three">
-                                        <div class="top-content centred">
-                                            <div class="meta-text"><a href="#">FASHION</a></div>
-                                            <div class="title"><h4><a href="post1.html">Most of this beautiful day</a></h4></div>
-                                            <div class="date"><span>On</span> March 07, 2018 &nbsp;&nbsp;<i class="flaticon-circle"></i>&nbsp;&nbsp;<span>By</span> PAUL JOHN HEYMAN</div>
-                                        </div>
-                                        <div class="text">
-                                            <p>The need no welfare states starship enterprise theatre Brady Bunch that's the way we all be came the Braden Bunch these days are all Happy and Free these days a fish do not fry in the kitchen and beans...</p>
-                                        </div>
-                                        <ul class="meta-list centred">
-                                            <li><a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>&nbsp; 19</a> &nbsp; <i class="flaticon-circle"></i> &nbsp; <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i>&nbsp; 13</a></li>
-                                            <li><a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i> &nbsp;Share</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="content-box overlay-item">
-                                    <div class="inner-box">
-                                        <div class="image-box">
-                                            <figure class="image"><img src="<?php echo get_template_directory_uri();?>/images/home2/9.jpg" alt=""></figure>
-                                            <div class="overlay-box">
-                                                <div class="overlay-inner">
-                                                    <div class="content">
-                                                        <a href="post1.html"><i class="fa fa-link"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="blog-content-one blog-content-two sp-three">
-                                        <div class="top-content centred">
-                                            <div class="meta-text"><a href="#">MUSIC</a></div>
-                                            <div class="title"><h4><a href="post1.html">Scream the addams family</a></h4></div>
-                                            <div class="date"><span>On</span> March 19, 2018 &nbsp;&nbsp;<i class="flaticon-circle"></i>&nbsp;&nbsp;<span>By</span> PAUL JOHN HEYMAN</div>
-                                        </div>
-                                        <div class="text">
-                                            <p>The need no welfare states starship enterprise theatre Brady Bunch that's the way we all be came the Braden Bunch these days are all Happy and Free these days a fish do not fry in the kitchen and beans...</p>
-                                        </div>
-                                        <ul class="meta-list centred">
-                                            <li><a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>&nbsp; 19</a> &nbsp; <i class="flaticon-circle"></i> &nbsp; <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i>&nbsp; 13</a></li>
-                                            <li><a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i> &nbsp;Share</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="content-box overlay-item">
-                                    <div class="inner-box">
-                                        <div class="image-box">
-                                            <figure class="image"><img src="<?php echo get_template_directory_uri();?>/images/home2/10.jpg" alt=""></figure>
-                                            <div class="overlay-box">
-                                                <div class="overlay-inner">
-                                                    <div class="content">
-                                                        <a href="post1.html"><i class="fa fa-link"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="blog-content-one blog-content-two sp-three">
-                                        <div class="top-content centred">
-                                            <div class="meta-text"><a href="#">LIFESTYLE</a></div>
-                                            <div class="title"><h4><a href="post1.html">Take a step that is new</a></h4></div>
-                                            <div class="date"><span>On</span> April 15, 2018 &nbsp;&nbsp;<i class="flaticon-circle"></i>&nbsp;&nbsp;<span>By</span> PAUL JOHN HEYMAN</div>
-                                        </div>
-                                        <div class="text">
-                                            <p>The need no welfare states starship enterprise theatre Brady Bunch that's the way we all be came the Braden Bunch these days are all Happy and Free these days a fish do not fry in the kitchen and beans...</p>
-                                        </div>
-                                        <ul class="meta-list centred">
-                                            <li><a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>&nbsp; 19</a> &nbsp; <i class="flaticon-circle"></i> &nbsp; <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i>&nbsp; 13</a></li>
-                                            <li><a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i> &nbsp;Share</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="content-box overlay-item">
-                                    <div class="inner-box">
-                                        <div class="image-box">
-                                            <figure class="image"><img src="<?php echo get_template_directory_uri();?>/images/home2/11.jpg" alt=""></figure>
-                                            <div class="overlay-box">
-                                                <div class="overlay-inner">
-                                                    <div class="content">
-                                                        <a href="post1.html"><i class="fa fa-link"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="blog-content-one blog-content-two sp-three">
-                                        <div class="top-content centred">
-                                            <div class="meta-text"><a href="#">TRAVEL</a></div>
-                                            <div class="title"><h4><a href="post1.html">Mister we could use a man</a></h4></div>
-                                            <div class="date"><span>On</span> May 13, 2018 &nbsp;&nbsp;<i class="flaticon-circle"></i>&nbsp;&nbsp;<span>By</span> PAUL JOHN HEYMAN</div>
-                                        </div>
-                                        <div class="text">
-                                            <p>The need no welfare states starship enterprise theatre Brady Bunch that's the way we all be came the Braden Bunch these days are all Happy and Free these days a fish do not fry in the kitchen and beans...</p>
-                                        </div>
-                                        <ul class="meta-list centred">
-                                            <li><a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>&nbsp; 19</a> &nbsp; <i class="flaticon-circle"></i> &nbsp; <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i>&nbsp; 13</a></li>
-                                            <li><a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i> &nbsp;Share</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php
+                                }
+                                wp_reset_postdata();
+                            ?>
                         </div>
                         <ul class="page-pagination centred">
                             <li><a href="#"><i class="fa fa-angle-left"></i>&nbsp;&nbsp;&nbsp;PREV</a></li>
