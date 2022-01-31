@@ -68,104 +68,38 @@
         </div>
     </section>
 
-    <?php
-    $my_acf_checkbox_field_arr = get_field('is_featured');
-    print_r($my_acf_checkbox_field_arr);
-        $args = array(
-            'post_type' => 'post',
-            'posts_per_page' => -1,
-            'meta_query' => array(
-                array(
-                    'key'   => 'is_featured',
-                    'value' => 'yes',
-                ),
-            )
-        );
-        $query = new WP_Query( $args );
-        while($query->have_posts()) {
-            $query->the_post();
-            the_title();
-        }
-    ?>
-
     <!-- carousel-style-one -->
     <section class="carousel-style-one mar-bottom-100">
         <div class="single-item-carousel-overlay owl-control-none">
-            <div class="single-item">
-                <div class="single-item-overlay">
-                    <div class="img-box">
-                        <img src="<?php echo get_template_directory_uri();?>/images/home4/1.jpg" alt="">
-                        <div class="overlay">
-                            <div class="inner-box">
-                                <div class="content blog-content-one">
-                                    <div class="meta-text"><a href="#">Travel</a></div>
-                                    <div class="title"><h6><a href="post2.html">Love Boat soon will be making<br /> another run</a></h6></div>
+        <?php
+            $args = array(
+                'post_type' => 'post',
+                'posts_per_page' => 10,
+                'meta_value' => '1',
+                'meta_key' => 'featured_post'
+            );
+            $query = new WP_Query($args);
+            while($query->have_posts()) {
+                $query->the_post();
+                ?>
+                    <div class="single-item">
+                        <div class="single-item-overlay">
+                            <div class="img-box">
+                                <img src="<?php echo the_post_thumbnail_url();?>" alt="">
+                                <div class="overlay">
+                                    <div class="inner-box">
+                                        <div class="content blog-content-one">
+                                            <div class="meta-text"><?php the_category();?></div>
+                                            <div class="title"><h6><a href="<?php the_permalink();?>"><?php the_title();?></a></h6></div>
+                                        </div>
+                                    </div> 
                                 </div>
-                            </div> 
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="single-item">
-                <div class="single-item-overlay">
-                    <div class="img-box">
-                        <img src="<?php echo get_template_directory_uri();?>/images/home4/2.jpg" alt="">
-                        <div class="overlay">
-                            <div class="inner-box">
-                                <div class="content blog-content-one">
-                                    <div class="meta-text"><a href="#">BEAUTY</a></div>
-                                    <div class="title"><h6><a href="post2.html">The professor and Mary Ann here<br /> on Gilligans</a></h6></div>
-                                </div>
-                            </div> 
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single-item">
-                <div class="single-item-overlay">
-                    <div class="img-box">
-                        <img src="<?php echo get_template_directory_uri();?>/images/home4/3.jpg" alt="">
-                        <div class="overlay">
-                            <div class="inner-box">
-                                <div class="content blog-content-one">
-                                    <div class="meta-text"><a href="#">Lifestyle</a></div>
-                                    <div class="title"><h6><a href="post2.html">Call him flipper flipper faster<br /> than lightning</a></h6></div>
-                                </div>
-                            </div> 
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single-item">
-                <div class="single-item-overlay">
-                    <div class="img-box">
-                        <img src="<?php echo get_template_directory_uri();?>/images/home4/4.jpg" alt="">
-                        <div class="overlay">
-                            <div class="inner-box">
-                                <div class="content blog-content-one">
-                                    <div class="meta-text"><a href="#">Music</a></div>
-                                    <div class="title"><h6><a href="post2.html">A maximum security stockade to<br /> Los Angeles</a></h6></div>
-                                </div>
-                            </div> 
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single-item">
-                <div class="single-item-overlay">
-                    <div class="img-box">
-                        <img src="<?php echo get_template_directory_uri();?>/images/home4/5.jpg" alt="">
-                        <div class="overlay">
-                            <div class="inner-box">
-                                <div class="content blog-content-one">
-                                    <div class="meta-text"><a href="#">Fashion</a></div>
-                                    <div class="title"><h6><a href="post2.html">East side to a deluxe apartment<br /> in the sky</a></h6></div>
-                                </div>
-                            </div> 
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <?php
+            }
+        ?>
         </div>
     </section>
     <!-- carousel-style-one end -->

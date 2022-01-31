@@ -296,6 +296,7 @@ class Belfast_Category extends WP_Widget {
                 <ul class="categories-list"> 
                     <?php
                         $cats = get_categories();
+                        print_r($cats);
                         foreach($cats as $cat) {
                     ?>
                         <li><a href="<?php echo $cat->slug;?>"><?php echo $cat->cat_name;?><span>(<?php echo $cat->category_count;?>)</span></a></li>

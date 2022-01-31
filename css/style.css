@@ -1183,7 +1183,9 @@ i.fa{
 .single-item-overlay .img-box img {
   width: 100%;
 }
-
+.carousel-style-one .single-item-overlay .img-box img{
+  height: 250px;
+}
 .single-item-overlay .img-box .overlay {
   position: absolute;
   left: 0;
